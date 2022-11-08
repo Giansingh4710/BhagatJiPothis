@@ -48,8 +48,8 @@ function playTrack(trkInd) {
 }
 
 const theAudioPlayer = document.getElementsByTagName('audio')[0]
-navigator.mediaSession.setActionHandler('previoustrack', playPreviousTrack)
-navigator.mediaSession.setActionHandler('nexttrack', playNextTrack)
+navigator.mediaSession.setActionHandler('previoustrack', () => playPreviousTrack())
+navigator.mediaSession.setActionHandler('nexttrack', () => playNextTrack())
 navigator.mediaSession.setActionHandler('play', () => theAudioPlayer.play())
 navigator.mediaSession.setActionHandler('pause', () => theAudioPlayer.pause())
 
