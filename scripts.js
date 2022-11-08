@@ -37,15 +37,22 @@ function playTrack(trkInd) {
   playerDiv.innerHTML = `
     <h3>
         <a 
-          href=${theLinkOfTrack.replaceAll( " ", "%20")} 
+          href=${theLinkOfTrack.replaceAll(" ", "%20")} 
           target="_blank"
           rel="noopener noreferrer"
         >
             ${theNameOfTrack}
         </a>
     </h3>
-    <video onended="playNextTrack()" onerror="playNextTrack()"  type="audio/mpeg" controls autoPlay={true} src='${theLinkOfTrack}' ></video>`
+    <audio onended="playNextTrack()" onerror="playNextTrack()"  type="audio/mpeg" controls autoPlay={true} src='${theLinkOfTrack}' ></audio>`
 }
+
+const theAudioPlayer = document.getElementsByTagName('audio')[0]
+navigator.mediaSession.setActionHandler('previoustrack', playPreviousTrack)
+navigator.mediaSession.setActionHandler('nexttrack', playNextTrack)
+navigator.mediaSession.setActionHandler('play', () => theAudioPlayer.play())
+navigator.mediaSession.setActionHandler('pause', () => theAudioPlayer.pause())
+
 
 function saveTrack() {
   const note = document.getElementById("noteForSavedTrack");
