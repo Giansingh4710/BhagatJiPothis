@@ -50,8 +50,14 @@ function playTrack(trkInd) {
 const theAudioPlayer = document.getElementsByTagName('audio')[0]
 navigator.mediaSession.setActionHandler('previoustrack', () => playPreviousTrack())
 navigator.mediaSession.setActionHandler('nexttrack', () => playNextTrack())
-navigator.mediaSession.setActionHandler('play', () => theAudioPlayer.play())
-navigator.mediaSession.setActionHandler('pause', () => theAudioPlayer.pause())
+navigator.mediaSession.setActionHandler('play', () => {
+  const theAudioPlayer = document.getElementsByTagName('audio')[0]
+  theAudioPlayer.play()
+})
+navigator.mediaSession.setActionHandler('pause', () => {
+  const theAudioPlayer = document.getElementsByTagName('audio')[0]
+  theAudioPlayer.pause()
+})
 
 
 function saveTrack() {
